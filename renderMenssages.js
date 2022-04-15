@@ -1,10 +1,12 @@
 let menssagensdoChat = [];
 let addmessage = document.querySelector(".chat");
 
+function pushmenssages (){
 const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
 
 promise.then(carregarMensagens);
 promise.catch(tratarErro);
+}
 
 function tratarErro(erro) {
     console.log(erro.response);
@@ -12,6 +14,10 @@ function tratarErro(erro) {
 
 function carregarMensagens(resposta){
     menssagensdoChat = resposta.data;
+    renderMenssage()
+}
+
+function renderMenssage(){
     let addmessage = document.querySelector(".chat");
     addmessage.innerHTML = "";
 
@@ -39,7 +45,8 @@ function carregarMensagens(resposta){
     addmessage.scrollIntoView(false);
 }
 
-
+pushmenssages()
+setInterval(pushmenssages, 3000)
 
 
 
