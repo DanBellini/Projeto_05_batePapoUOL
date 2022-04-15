@@ -1,6 +1,4 @@
 let participante = {};
-let messages = [];
-
 
 function AddPerson (person){
     person = prompt("Qual o seu nome?")
@@ -9,12 +7,12 @@ function AddPerson (person){
     namePost()
 }
 
-//setTimeout(AddPerson(), 1500);
+AddPerson();
 
 function namePost (){
 const requisicao = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', participante);
 
-requisicao.catch(tratarFalha())
+requisicao.catch(tratarFalha)
 }
 
 function tratarFalha(erro){
@@ -29,6 +27,6 @@ function keepConection(){
 }
 
 
-//setInterval(keepConection(),4000)
+setInterval(keepConection,4000);
 
 
