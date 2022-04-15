@@ -1,9 +1,10 @@
 let participante = {};
+let savefrom;
 
 function AddPerson (person){
     person = prompt("Qual o seu nome?")
     participante.name = person
-
+    savefrom = person
     namePost()
 }
 
@@ -28,5 +29,16 @@ function keepConection(){
 
 
 setInterval(keepConection,4000);
+
+function sendMenssage() {
+    const send = {
+        from: savefrom,
+        to: "Todos",
+        text: document.querySelector("input").value,
+        type: "message"
+    }
+    axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', send)
+    renderMenssage()
+  }
 
 
